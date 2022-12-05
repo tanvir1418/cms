@@ -9,8 +9,7 @@
  * 
  * @return mixed An associative array containing the article with that ID, or null if not found
  */
-function getArticle($conn, $id, $columns = '*')
-{
+function getArticle($conn, $id, $columns = '*') {
     $sql = "SELECT $columns FROM article WHERE id = ?";
 
     $stmt = mysqli_prepare($conn, $sql);
@@ -38,8 +37,7 @@ function getArticle($conn, $id, $columns = '*')
  * 
  * @return array An array of validation error message
  */
-function validateArticle($title, $content, $published_at)
-{
+function validateArticle($title, $content, $published_at) {
     $errors = [];
 
     if ($title == '') {

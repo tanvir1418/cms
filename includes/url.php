@@ -7,8 +7,7 @@
  * 
  * @return void
  */
-function redirect($path)
-{
+function redirect($path) {
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
         $protocol = 'https';
     } else {

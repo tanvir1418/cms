@@ -5,8 +5,7 @@
  *
  * @return object Connection to a MySQL server
  */
-function getDB()
-{
+function getDB() {
     $db_host = 'localhost';
     $db_user = 'cms_www';
     $db_pass = 'a8KuSJEQnaVUFu2O';

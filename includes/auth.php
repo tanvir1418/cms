@@ -5,7 +5,6 @@
  *
  * @return boolean True if a user is logged in, false otherwise
  */
-function isLoggedIn()
-{
+function isLoggedIn() {
     return isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'];
 }
