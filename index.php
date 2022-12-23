@@ -1,12 +1,8 @@
 <?php
-require 'classes/Database.php';
-require 'classes/Article.php';
-require 'classes/Auth.php';
 
-session_start();
+require 'includes/init.php';
 
-$db = new Database();
-$conn = $db->getConn();
+$conn = require 'includes/db.php';
 
 $articles = Article::getAll($conn);
 
