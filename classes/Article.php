@@ -6,6 +6,7 @@ class Article {
     public $title;
     public $content;
     public $published_at;
+    public $image_file;
     public $errors = [];
 
     public static function getAll($conn) {
@@ -137,5 +138,16 @@ class Article {
 
     public static function getTotal($conn) {
         return $conn->query('SELECT COUNT(*) FROM article')->fetchColumn();
+    }
+
+    public function setImageFile($conn, $filename) {
+        $sql = "UPDATE article SET image_file = :image_file WHERE id = :id";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindValue(":id", $this->id, PDO::PARAM_INT);
+        $stmt->bindValue(":image_file", $filename, $filename == null ? PDO::PARAM_NULL : PDO::PARAM_STR);
+
+        return $stmt->execute();
     }
 }
