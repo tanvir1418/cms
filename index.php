@@ -4,7 +4,18 @@ require 'includes/init.php';
 
 $conn = require 'includes/db.php';
 
-$articles = Article::getAll($conn);
+// if (isset($_GET['page'])) {
+//     $paginator = new Paginator($_GET['page'], 4);
+// } else {
+//     $paginator = new Paginator(1, 4);
+// }
+
+// $paginator = new Paginator(isset($_GET['page']) ? $_GET['page'] : 1, 4);
+
+// Null coalescing operator (when using Ternary Operator) 
+$paginator = new Paginator($_GET['page'] ?? 1, 4, Article::getTotal($conn));
+
+$articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
 ?>
 
@@ -23,6 +34,9 @@ $articles = Article::getAll($conn);
             </li>
         <?php endforeach ?>
     </ul>
+
+    <?php require 'includes/pagination.php'; ?>
+
 <?php endif ?>
 
 <?php require 'includes/footer.php' ?>
