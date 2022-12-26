@@ -6,7 +6,7 @@
     </ul>
 <?php endif; ?>
 
-<form method="post">
+<form method="post" id="formArticle">
 
     <div>
         <label for="title">Title</label>
