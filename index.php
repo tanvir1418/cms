@@ -24,7 +24,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true)
 <?php if (empty($articles)) : ?>
     <p>No articles found.</p>
 <?php else : ?>
-    <ul>
+    <ul id="index">
         <?php foreach ($articles as $article) : ?>
             <li>
                 <article>
