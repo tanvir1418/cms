@@ -5,7 +5,7 @@ require 'includes/init.php';
 $conn = require 'includes/db.php';
 
 if (isset($_GET['id'])) {
-    $article = Article::getWithCategories($conn, $_GET['id']);
+    $article = Article::getWithCategories($conn, $_GET['id'], true);
 } else {
     $article = null;
 }
@@ -16,6 +16,13 @@ if (isset($_GET['id'])) {
 <?php if ($article) : ?>
     <article>
         <h2><?= htmlspecialchars($article[0]['title']); ?></h2>
+
+        <time datetime="<?= $article[0]['published_at']; ?>">
+            <?php 
+                $datetime = new DateTime($article[0]['published_at']);
+                echo $datetime->format("j F, Y");
+            ?>
+        </time>
 
         <?php if ($article[0]['category_name']) : ?>
             <p>Categories:

@@ -19,6 +19,12 @@ if (isset($_GET['id'])) {
     <article>
         <h2><?= htmlspecialchars($article[0]['title']); ?></h2>
 
+        <?php if($article[0]['published_at']): ?>
+            <time><?= $article[0]['published_at']; ?></time>
+        <?php else: ?>
+            Unpublished
+        <?php endif; ?>
+
         <?php if ($article[0]['category_name']) : ?>
             <p>Categories:
                 <?php foreach ($article as $a) : ?>
